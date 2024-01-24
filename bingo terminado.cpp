@@ -84,7 +84,7 @@ int main() {
     srand(static_cast<unsigned int>(time(nullptr)));
 
     int escolha;
-    cout << "Escolhe até quantos numeros desejas:\n";
+    cout << "Escolhe até quantos numeros queres:\n";
     cout << "1. 1 a 75\n";
     cout << "2. 1 a 90\n";
     cout << "3. 1 a 100\n";
