@@ -9,9 +9,7 @@
 
 using namespace std;
 
-#ifdef _WIN32
-#include <windows.h>
-#endif
+
 
 void setColor(string color) {
 #ifdef _WIN32
@@ -83,7 +81,7 @@ void esperarPorSegundos(int segundos) {
 }
 
 int main() {
-    srand(<unsigned int>(time(nullptr)));
+    srand(static_cast<unsigned int>(time(nullptr)));
 
     int escolha;
     cout << "Escolhe até quantos numeros desejas:\n";
