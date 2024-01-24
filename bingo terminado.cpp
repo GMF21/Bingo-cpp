@@ -1,3 +1,13 @@
+/**
+ * @file bingofinished.cpp
+ * @author Gonçalo Ferreira
+ * @brief Jogo do bingo
+ * @version 0.1
+ * @date 17 / 1 / 2024
+*/
+
+
+
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
