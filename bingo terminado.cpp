@@ -11,6 +11,10 @@ using namespace std;
 
 
 
+
+string Vermelho = "\u001b[31m"; //cor vermelho
+string resetCor = "\u001b[0m" ; //resetar a cor 
+
 void setColor(string color) {
 #ifdef _WIN32
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
@@ -19,7 +23,7 @@ void setColor(string color) {
 #endif
 }
 
-int gerarNumeroUnico(const vector<int>& numerosUsados, int limiteSuperior) {
+int const gerarNumeroUnico(const vector<int>& numerosUsados, int limiteSuperior) {
     int numeroAleatorio;
     do {
         numeroAleatorio = rand() % limiteSuperior + 1;
@@ -81,7 +85,7 @@ void esperarPorSegundos(int segundos) {
 }
 
 int main() {
-    srand(static_cast<unsigned int>(time(nullptr)));
+    srand(unsigned (time(0)));
 
     int escolha;
     cout << "Escolhe até quantos numeros queres:\n";
@@ -115,38 +119,42 @@ int main() {
         cout << "\nSorteio automático \n";
         bool continuarSorteio = true;
 
-        while (continuarSorteio) {
-            int sorteio = gerarNumeroUnico(numerosSorteados, limiteSuperior);
-            numerosSorteados.push_back(sorteio);
+       if (modoSorteio == 1) {
+    // Sorteio automático de números
+    cout << "\nSorteio automático \n";
 
-            esperarPorSegundos(1);  // Aguarda 1 segundo antes de mostrar o próximo número
+    while (true) {  // Loop infinito
+        int sorteio = gerarNumeroUnico(numerosSorteados, limiteSuperior);
+        numerosSorteados.push_back(sorteio);
 
-            cout << "Número sorteado: " << sorteio << "\n";
+       
 
-            // Exibir números sorteados nos cartões
-            for (int i = 0; i < numeroCartoes; ++i) {
-                cout << "Cartão " << i + 1 << ": ";
-                for (int linha = 0; linha < 5; ++linha) {
-                    for (int coluna = 0; coluna < 5; ++coluna) {
-                        int numeroCarta = cartasBingo[i][linha][coluna];
-                        if (find(numerosSorteados.begin(), numerosSorteados.end(), numeroCarta) != numerosSorteados.end()) {
-                            setColor("\u001b[31m");  // Vermelho
-                            cout << numeroCarta << "\t";
-                            setColor("\u001b[0m");  // Resetar cor
-                        } else {
-                            cout << numeroCarta << "\t";
-                        }
+        esperarPorSegundos(1);  // Aguarda 1 segundo antes de mostrar o próximo número
+
+        cout << "Número sorteado: " << sorteio << "\n";
+
+        // Exibir números sorteados nos cartões
+        for (int i = 0; i < numeroCartoes; ++i) {
+            cout << "Cartão " << i + 1 << ": ";
+            for (int linha = 0; linha < 5; ++linha) {
+                for (int coluna = 0; coluna < 5; ++coluna) {
+                    int numeroCarta = cartasBingo[i][linha][coluna];
+                    if (find(numerosSorteados.begin(), numerosSorteados.end(), numeroCarta) != numerosSorteados.end()) {
+                        setColor(Vermelho);  // Vermelho
+                        cout << numeroCarta << "\t";
+                        setColor(resetCor);  // Resetar cor
+                    } else {
+                        cout << numeroCarta << "\t";
                     }
-                    cout << endl;
                 }
                 cout << endl;
             }
-
-            cout << "Deseja continuar o sorteio? (0 - Não, 1 - Sim): ";
-            cin >> continuarSorteio;
+            cout << endl;
         }
+    }
 
-        cout << "Fim do sorteio automático.\n";
+    cout << "Fim do sorteio automático.\n";
+}
     } else if (modoSorteio == 0) {
         // Sorteio manual de números
         int sorteioAnterior = -1;
