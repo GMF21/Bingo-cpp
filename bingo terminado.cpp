@@ -188,9 +188,9 @@ int main() {
                     for (int coluna = 0; coluna < 5; ++coluna) {
                         int numeroCarta = cartasBingo[i][linha][coluna];
                         if (find(numerosSorteados.begin(), numerosSorteados.end(), numeroCarta) != numerosSorteados.end()) {
-                            setColor("\u001b[31m");  // Vermelho
+                            setColor(Vermelho);  // Vermelho
                             cout << numeroCarta << "\t";
-                            setColor("\u001b[0m");  // Resetar cor
+                            setColor(resetCor);  // Resetar cor
                         } else {
                             cout << numeroCarta << "\t";
                         }
