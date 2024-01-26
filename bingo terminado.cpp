@@ -2,7 +2,7 @@
  * @file bingofinished.cpp
  * @author Gonçalo Ferreira
  * @brief Jogo do bingo
- * @version 0.1
+ * @version 1
  * @date 17 / 1 / 2024
 */
 
@@ -84,7 +84,7 @@ void salvarCartaEmArquivo(const vector<vector<int>>& carta, int numeroCartao) {
         }
 
         arquivo.close();
-        cout << "Carta de Bingo " << numeroCartao << " salva em " << nomeArquivo << endl;
+        cout << "Cartao Bingo " << numeroCartao << " salva em " << nomeArquivo << endl;
     } else {
         cerr << "Erro ao criar o arquivo " << nomeArquivo << endl;
     }
