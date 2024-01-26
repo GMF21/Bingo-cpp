@@ -72,7 +72,7 @@ vector<vector<int>> gerarCartaBingo(int escolha) {
 }
 
 void salvarCartaEmArquivo(const vector<vector<int>>& carta, int numeroCartao) {
-    string nomeArquivo = "carta_bingo_" + to_string(numeroCartao) + ".txt";
+    string nomeArquivo = "cartao_bingo_" + to_string(numeroCartao) + ".txt";
     ofstream arquivo(nomeArquivo);
 
     if (arquivo.is_open()) {
